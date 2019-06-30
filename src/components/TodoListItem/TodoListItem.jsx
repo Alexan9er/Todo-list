@@ -1,38 +1,73 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './TodoListItem.css';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 
-const TodoListItem = ({ label, important = false }) => {
-  const style = {
-    color: important ? '#1265d0' : '#222',
-    fontWeight: important ? '700' : '600',
-  };
-  return (
-    <span className="todo-list-item">
-      <span className="todo-list-item-label" style={style}>
-        {label}
+export default class TodoListItem extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  render() {
+    const {
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone,
+      done,
+      important,
+    } = this.props;
+
+    let classNames = 'todo-list-item';
+
+    if (done) {
+      classNames += ' item-done';
+    }
+    if (important) {
+      classNames += ' important';
+    }
+
+    return (
+      <span className={classNames}>
+        <span
+          className="todo-list-item-label"
+          onClick={onToggleDone}
+          role="presentation"
+        >
+          {label}
+        </span>
+
+        <div className="buttons-group">
+          <button
+            type="submit"
+            className="btn btn-outline btn-outline-success btn-sm"
+            onClick={onToggleImportant}
+          >
+            <i className="fa fa-exclamation" />
+          </button>
+          <button
+            type="submit"
+            className="btn btn-outline btn-outline-danger btn-sm"
+            onClick={onDeleted}
+          >
+            <i className="fa fa-trash-o" />
+          </button>
+        </div>
       </span>
-      <div className="buttons-group">
-        <button
-          type="submit"
-          className="btn btn-outline btn-outline-success btn-sm"
-        >
-          <i className="fa fa-exclamation" />
-        </button>
-        <button
-          type="submit"
-          className="btn btn-outline btn-outline-danger btn-sm"
-        >
-          <i className="fa fa-trash-o" />
-        </button>
-      </div>
-    </span>
-  );
+    );
+  }
+}
+
+TodoListItem.propTypes = {
+  label: propTypes.string.isRequired,
+  onDeleted: propTypes.func.isRequired,
+  onToggleImportant: propTypes.func.isRequired,
+  onToggleDone: propTypes.func.isRequired,
+  done: propTypes.bool,
+  important: propTypes.bool,
 };
 
-// TodoListItem.propTypes = {
-//   label: propTypes.string.isRequired,
-//   important: propTypes.bool.isRequired,
-// };
-
-export default TodoListItem;
+TodoListItem.defaultProps = {
+  done: false,
+  important: false,
+};

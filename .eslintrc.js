@@ -17,7 +17,10 @@ module.exports = {
   rules: {
     'max-len': ['error', { code: 80 }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'jsx-a11y/label-has-associated-control': [2, { required: { some: ['nesting', 'id'] } }],
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      { required: { some: ['nesting', 'id'] } },
+    ],
     'no-use-before-define': ['error', { functions: false }],
     'comma-dangle': [
       'error',
