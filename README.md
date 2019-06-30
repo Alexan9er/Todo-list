@@ -1,8 +1,13 @@
 # Todo List
+#### You can watch the [demo](https://codesandbox.io/s/todo-qk0nl?fontsize=14).
+
+![todoList](https://user-images.githubusercontent.com/48125634/60394372-d458d000-9b2b-11e9-8065-a3f712c0a7ff.jpg)
 
 This project was created specifically to learn how to work better with the [react](https://en.reactjs.org/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
 
 ## Getting Started
 
